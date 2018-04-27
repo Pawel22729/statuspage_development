@@ -1,0 +1,52 @@
+<html>
+
+<head> 
+
+<style>
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+</style>
+<script>
+function getAll() {
+  //var y = document.getElementsByClassName("content");
+  var list = document.getElementsByClassName("content");
+  var y = [];
+  for(var l=0; l<list.length; l++) {
+    if(list[l].style.display = "block"){
+      y.push(list[l]);
+    }
+  }
+  filters = document.getElementById("filter_env").value
+  filters = filters.split(" ");
+  filters = filters.filter(Boolean)
+  for(var i=0; i<y.length; i++) {
+    for(var f=0; f<filters.length; f++) {
+        if (y[i].innerHTML.indexOf(filters[f]) == -1) {
+              y[i].style.display = "none";
+        }
+    }
+  }
+}
+
+setInterval(getAll, 100);
+</script>
+</head>
+
+<body>
+<form>
+<input type="text" id="filter_env">
+</form>
+
+<div id="container">
+{% for d in data %}
+    <p class="content" style="display: block;">{{ d }}</p>
+{% endfor %}
+</div>
+
+</body>
+
+<html>

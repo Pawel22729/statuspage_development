@@ -1,0 +1,14 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        {% for d in data.keys() %}
+            <b>{{ d }}:</b><br> 
+                    {% for line in data[d] %}
+                        <p>{{ line }}</p>
+                    {% endfor %}
+        {% endfor %}
+    </body>
+</html>
