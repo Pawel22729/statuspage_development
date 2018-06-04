@@ -2,15 +2,15 @@
 config:
   apis:
     jenkins:
-      wendy_scripts: "https://wendy.williamhill.local/job/Stingray-YAML-GIT--Traffic-Scripts.v2/api/json?pretty=true"
+      wendy_scripts: "https://api/json?pretty=true"
       jenkins_timer: 120
     tracker:
       envs:
-        pp1: "https://git.nonprod.williamhill.plc/tracker/ppx/raw/master/brs/pp1.yaml"
-        pp2: "https://git.nonprod.williamhill.plc/tracker/ppx/raw/master/brs/pp2.yaml"
-        pp3: "https://git.nonprod.williamhill.plc/tracker/ppx/raw/master/brs/pp3.yaml"
-        sc1: "https://git.nonprod.williamhill.plc/tracker/prd/raw/master/sc1/prd.yaml"
+        pp1: "https://pp1.yaml"
+        pp2: "https://pp2.yaml"
+        pp3: "https://pp3.yaml"
+        sc1: "https://prd.yaml"
       tracker_timer: 60
     certs:
-      certs_path: "/home/pawel/certificates/SSL/"
+      certs_path: "/certificates/SSL/"
       certs_exten: ".crt"
