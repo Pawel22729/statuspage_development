@@ -1,0 +1,17 @@
+endpoints:
+    wp_endpoint:
+      description: 'Wirtualna Polska health-check HTTP 200'
+      check: 
+        type: 'http'
+        endpoint_url: 'http://www.wp.pl'
+        expect_codes: [200]
+        expect_strings: ['polska']
+        # basic_auth_user: 'user'
+        # basic_auth_pass: 'pass'
+    onet_endpoint:
+        description: 'Onet health-check HTTP 200'
+        check: 
+          type: 'http'
+          endpoint_url: 'http://www.wp.pl'
+          expect_codes: [200]
+          expect_strings: ['polska']
