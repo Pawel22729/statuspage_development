@@ -24,25 +24,30 @@ class Check():
         }
         self.check = json.loads(self.check.replace("'", "\""))
         if self.check['type'] == 'http':
-            req = requests.get(self.check['endpoint_url'])
-            if self.check['expect_codes']:
-                if req.status_code in self.check['expect_codes']:
-                    is_alive['is_alive'] = 'yes'
-                else:
-                    is_alive['is_alive'] = 'no'  
-            
-            if self.check['expect_strings']:
-                for expect_string in self.check['expect_strings']:
-                    if expect_string in str(req.content):
+            try:
+                req = requests.get(self.check['endpoint_url'])
+            except Exception as e:
+                logger.debug('Exception found: %s' % e)
+                pass
+
+            if 'req' in locals():
+                if self.check['expect_codes']:
+                    if req.status_code in self.check['expect_codes']:
                         is_alive['is_alive'] = 'yes'
                     else:
-                        is_alive['is_alive'] = 'no'
+                        is_alive['is_alive'] = 'no'  
+                
+                if self.check['expect_strings']:
+                    for expect_string in self.check['expect_strings']:
+                        if expect_string in str(req.content):
+                            is_alive['is_alive'] = 'yes'
+                        else:
+                            is_alive['is_alive'] = 'no'
 
         elif self.check['ping']:
-            pass                   
+            pass            
 
-        return json.dumps(is_alive)
-
+        return is_alive
     
 def check_all():
     results = []

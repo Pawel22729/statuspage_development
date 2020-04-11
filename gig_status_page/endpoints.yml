@@ -15,3 +15,10 @@ endpoints:
           endpoint_url: 'http://www.wp.pl'
           expect_codes: [200]
           expect_strings: ['polska']
+    red_endpoint:
+        description: 'Fake failed endpoint'
+        check:
+          type: 'http'
+          endpoint_url: 'http://xxx.xx.xx'
+          expect_codes: [200]
+    

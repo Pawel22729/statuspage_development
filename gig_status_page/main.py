@@ -14,9 +14,9 @@ def hello_world():
 def check_single(endpoint):
     test_result = []
     test_result.append(Check(endpoint=endpoint).check_single())
-    return render_template('index.html', results=test_result)
+    return str(test_result)
 
-@app.route('/all')
+@app.route('/status/all')
 def check_multi():
     test_result = check_all()
     return render_template('index.html', results=test_result) 

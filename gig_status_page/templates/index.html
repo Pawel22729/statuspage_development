@@ -1,5 +1,43 @@
+<html>
+
+<head>
+  <style>
+  .each_entry {
+    padding: 5px;
+  }  
+  .endpoint_name {
+    color: black;
+    float: left;
+  }
+  .is_alive_no {
+    color: red;
+  }
+  .is_alive_yes {
+    color: green;
+  }
+  </style>
+  
+  <script>
+    setInterval(location.reload(), 30000);
+  </script>
+
+</head>
+
+<body>
+
+<h1>Endpoints healthchecks:</h1>  
+
 {% for entry in results %}
 
-  {{ entry['endpoint_name'] }}
+  <div class="endpoint_name each_entry">
+    {{ entry['endpoint_name'] }}
+  </div>
+  <div class="each_entry {% if entry['is_alive'] == 'yes' %} is_alive_yes {% else %} is_alive_no {% endif %}">
+    <p id="entry_health"> {{ entry['is_alive'] }} </p>
+  </div>
 
 {% endfor %}
+
+</body>
+
+</html>
