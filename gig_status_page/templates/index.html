@@ -18,7 +18,7 @@
   </style>
   
   <script>
-    setInterval(location.reload(), 30000);
+    setInterval("location.reload();", 30000);
   </script>
 
 </head>
@@ -33,7 +33,10 @@
     {{ entry['endpoint_name'] }}
   </div>
   <div class="each_entry {% if entry['is_alive'] == 'yes' %} is_alive_yes {% else %} is_alive_no {% endif %}">
-    <p id="entry_health"> {{ entry['is_alive'] }} </p>
+    {{ entry['is_alive'] }}
+    {% if entry['is_alive'] == 'no' %}
+      {{ entry['endpoint_url'] }}
+    {% endif %}  
   </div>
 
 {% endfor %}

@@ -18,11 +18,12 @@ class Check():
 
     def check_single(self):
         """Perform check and assert results based on configuration."""
+        self.check = json.loads(self.check.replace("'", "\""))
         is_alive = {
             'endpoint_name': self.endpoint,
+            'endpoint_url': self.check['endpoint_url'],
             'is_alive': 'no'
         }
-        self.check = json.loads(self.check.replace("'", "\""))
         if self.check['type'] == 'http':
             try:
                 req = requests.get(self.check['endpoint_url'])
