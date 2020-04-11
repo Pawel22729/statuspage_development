@@ -1,5 +1,5 @@
-{% for test in results %}
+{% for entry in results %}
 
-  {{ test.name }}: {{ test.result }}<br> 
+  {{ entry['endpoint_name'] }}
 
-{% endfor %}  
+{% endfor %}

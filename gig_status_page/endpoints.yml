@@ -10,7 +10,7 @@ endpoints:
         # basic_auth_pass: 'pass'
     onet_endpoint:
         description: 'Onet health-check HTTP 200'
-        check: 
+        check:
           type: 'http'
           endpoint_url: 'http://www.wp.pl'
           expect_codes: [200]
